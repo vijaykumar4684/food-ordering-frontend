@@ -2,10 +2,13 @@ import landingImage from "../assets/landing.png";
 import appDownloadImage from "../assets/appDownload.png";
 import SearchBar from "../components/SearchBar";
 import { useNavigate } from "react-router-dom";
+import {useGetRestaurants} from "../api/RestaurantApi";
+import Restaurantlist from "../components/Restaurantlist";
 
 const HomePage = () => {
   const navigate = useNavigate();
-
+  const { restaurant, isLoading }=useGetRestaurants();
+  console.log("this is",restaurant);
   const handleSearchSubmit = (searchFormValues) => {
     navigate({
       pathname: `/search/${searchFormValues.searchQuery}`,
@@ -22,6 +25,10 @@ const HomePage = () => {
         <SearchBar
           placeHolder="Search by City or Town"
           onSubmit={handleSearchSubmit}
+        />
+        <Restaurantlist 
+          restaurant={restaurant} 
+          isLoading={isLoading} 
         />
       </div>
       <div className="grid md:grid-cols-2 gap-5">

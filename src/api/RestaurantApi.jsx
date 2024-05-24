@@ -26,6 +26,27 @@ export const useGetRestaurant = (restaurantId) => {
   return { restaurant, isLoading };
 };
 
+export const useGetRestaurants = () => {
+  const getRestaurantByIdRequest = async () => {
+    const response = await fetch(
+      `${API_BASE_URL}/api/restaurant/`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to get restaurant");
+    }
+
+    return response.json();
+  };
+
+  const { data: restaurant, isLoading } = useQuery(
+    "fetchRestaurant",
+    getRestaurantByIdRequest,
+  );
+
+  return { restaurant, isLoading };
+};
+
 export const useSearchRestaurants = (
   searchState,
   city
