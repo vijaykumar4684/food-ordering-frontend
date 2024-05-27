@@ -8,7 +8,6 @@ import Restaurantlist from "../components/Restaurantlist";
 const HomePage = () => {
   const navigate = useNavigate();
   const { restaurant, isLoading }=useGetRestaurants();
-  console.log("this is",restaurant);
   const handleSearchSubmit = (searchFormValues) => {
     navigate({
       pathname: `/search/${searchFormValues.searchQuery}`,

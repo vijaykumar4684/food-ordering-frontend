@@ -72,8 +72,8 @@ const OrderItemCard = ({ order }) => {
       </CardHeader>
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          {order.cartItems.map((cartItem) => (
-            <span>
+          {order && order.cartItems.map((cartItem,index) => (
+            <span key={index} >
               <Badge variant="outline" className="mr-2">
                 {cartItem.quantity}
               </Badge>
@@ -92,8 +92,10 @@ const OrderItemCard = ({ order }) => {
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent position="popper">
-              {ORDER_STATUS.map((status) => (
-                <SelectItem value={status.value}>{status.label}</SelectItem>
+              {ORDER_STATUS && ORDER_STATUS.map((status,index) => (
+                <div>  
+                <SelectItem key={index} value={status.value}>{status.label}</SelectItem>
+                </div>
               ))}
             </SelectContent>
           </Select>

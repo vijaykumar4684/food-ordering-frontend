@@ -32,7 +32,13 @@ const UserProfileForm = ({
 }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: currentUser,
+    defaultValues: {
+    currentUser:"",
+    name:"",
+    addressLine1:"",
+    city:"",
+    country:"",
+    },
   });
 
   useEffect(() => {

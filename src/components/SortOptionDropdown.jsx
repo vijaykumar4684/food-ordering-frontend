@@ -28,19 +28,21 @@ const SortOptionDropdown = ({ onChange, sortOption }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="cursor-pointer">
+      <DropdownMenuTrigger asChild className="cursor-pointer">
         <Button variant="outline" className="w-full">
           Sort by: {selectedSortLabel}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {SORT_OPTIONS.map((option) => (
+        {SORT_OPTIONS.map((option,index) => (
+          <div key={index}>
           <DropdownMenuItem
             className="cursor-pointer"
             onClick={() => onChange(option.value)}
-          >
+            >
             {option.label}
           </DropdownMenuItem>
+          </div>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

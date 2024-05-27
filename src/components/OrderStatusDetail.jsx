@@ -13,8 +13,8 @@ const OrderStatusDetail = ({ order }) => {
       <div className="flex flex-col">
         <span className="font-bold">Your Order</span>
         <ul>
-          {order.cartItems.map((item) => (
-            <li>
+          {order.cartItems.map((item,index) => (
+            <li key={index}>
               {item.name} x {item.quantity}
             </li>
           ))}

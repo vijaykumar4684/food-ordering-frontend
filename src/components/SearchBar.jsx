@@ -17,7 +17,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      searchQuery,
+      searchQuery:"",
     },
   });
 
